@@ -16,6 +16,7 @@ public class BootReceiver extends BroadcastReceiver {
 
 
 
+
     // BroadcastReceiver를 상속하여 처리 해줍니다.
 
     @Override

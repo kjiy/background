@@ -26,18 +26,23 @@ public class MyAlarm extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         Log.d(TAG, "onReceive()"); /** * http://mmarvick.github.io/blog/blog/lollipop-multiple-broadcastreceiver-call-state/ * 2번 호출되는 문제 해결 */
         String state = intent.getStringExtra(LocationManager.GPS_PROVIDER);
+
+        intent = new Intent(context, ShowMsgActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+
 //        if (state.equals(mLastState)) {
 //            return;
 //        } else {
 //            mLastState = state;
 //        }
-        if (LocationManager.KEY_LOCATION_CHANGED.equals(state)) {
-            String incomingNumber = intent.getStringExtra(LocationManager.GPS_PROVIDER);
+//        if (LocationManager.KEY_LOCATION_CHANGED.equals(state)) {
+//            String incomingNumber = intent.getStringExtra(LocationManager.GPS_PROVIDER);
 //            final String phone_number = PhoneNumberUtils.formatNumber(incomingNumber);
-            Intent serviceIntent = new Intent(context, ShowMsgActivity.class);
+//            Intent serviceIntent = new Intent(context, ShowMsgActivity.class);
 //            serviceIntent.putExtra(ShowMsgActivityer);
-            context.startService(serviceIntent);
-        }
+//            context.startService(serviceIntent);
+//        }
     }
 
 

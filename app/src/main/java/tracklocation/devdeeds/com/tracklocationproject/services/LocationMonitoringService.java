@@ -111,9 +111,9 @@ public class LocationMonitoringService extends Service implements
     public void onLocationChanged(Location location) {
         Log.d(TAG, "Location changed");
 
-        Intent intent = new Intent(this, ShowMsgActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startActivity(intent);
+//        Intent intent = new Intent(this, ShowMsgActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        this.startActivity(intent);
 
 
 
