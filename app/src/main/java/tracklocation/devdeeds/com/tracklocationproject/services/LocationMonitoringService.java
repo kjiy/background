@@ -18,6 +18,9 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import tracklocation.devdeeds.com.tracklocationproject.MainActivity;
+import tracklocation.devdeeds.com.tracklocationproject.R;
+import tracklocation.devdeeds.com.tracklocationproject.ShowMsgActivity;
 import tracklocation.devdeeds.com.tracklocationproject.settings.Constants;
 
 
@@ -107,6 +110,14 @@ public class LocationMonitoringService extends Service implements
     @Override
     public void onLocationChanged(Location location) {
         Log.d(TAG, "Location changed");
+
+//        Intent intent = new Intent(this, ShowMsgActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        this.startActivity(intent);
+
+
+
+
 
 
         if (location != null) {

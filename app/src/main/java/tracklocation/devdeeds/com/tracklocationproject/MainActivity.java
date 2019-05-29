@@ -1,6 +1,8 @@
 package tracklocation.devdeeds.com.tracklocationproject;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
 
 
+    //B
+    private Intent mBackgroundServiceIntent;
+    private  BackgroundService mBackgroundService;
+
     private boolean mAlreadyStartedService = false;
     private TextView mMsgView;
 
@@ -46,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mMsgView = (TextView) findViewById(R.id.msgView);
+
+        Intent intent = new Intent(this, MyAlarm.class);
+
+        PendingIntent pi = PendingIntent.getBroadcast(this.getApplicationContext(),1,intent,0);
+        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),5000,pi);
+
+
+        // BackgroundService
+        mBackgroundService = new BackgroundService(getApplicationContext());
+        mBackgroundServiceIntent = new Intent(getApplicationContext(), mBackgroundService.getClass());
+        // 서비스가 실행 중인지 확인
+        if (!BootReceiver.isServiceRunning(this, mBackgroundService.getClass())) {
+            // 서비스가 실행하고 있지 않는 경우 서비스 실행
+            startService(mBackgroundServiceIntent);
+        }
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
