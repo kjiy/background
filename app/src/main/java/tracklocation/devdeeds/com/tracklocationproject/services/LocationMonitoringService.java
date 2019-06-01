@@ -115,11 +115,6 @@ public class LocationMonitoringService extends Service implements
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        this.startActivity(intent);
 
-
-
-
-
-
         if (location != null) {
             Log.d(TAG, "== location != null");
 

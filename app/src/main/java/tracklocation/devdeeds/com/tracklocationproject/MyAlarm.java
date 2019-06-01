@@ -29,7 +29,7 @@ public class MyAlarm extends BroadcastReceiver {
 
         intent = new Intent(context, ShowMsgActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+        context.startActivity(intent);            //여기서 팝업이 뜸
 
 //        if (state.equals(mLastState)) {
 //            return;
